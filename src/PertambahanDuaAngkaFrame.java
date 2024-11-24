@@ -1,12 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
-/**
- *
- * @author ASUS
- */
+import javax.swing.JOptionPane;
+
 public class PertambahanDuaAngkaFrame extends javax.swing.JFrame {
 
     /**
@@ -44,12 +38,27 @@ public class PertambahanDuaAngkaFrame extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 255, 0));
         jButton1.setText("Hitung");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 0));
         jButton2.setText("Hapus");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 0, 0));
         jButton3.setText("Keluar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,6 +121,40 @@ public class PertambahanDuaAngkaFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         try {
+        // Tangkap input dari txtAngka1 dan txtAngka2
+        int angka1 = Integer.parseInt(jTextField1.getText());
+        int angka2 = Integer.parseInt(jTextField2.getText());
+        
+        // Lakukan penjumlahan
+        int hasil = angka1 + angka2;
+        
+        // Tampilkan hasil hanya dalam JOptionPane
+        JOptionPane.showMessageDialog(this, "Hasil penjumlahan: " + hasil, "Hasil", JOptionPane.INFORMATION_MESSAGE);
+     } catch (NumberFormatException ex) {
+        // Jika input bukan angka, tampilkan pesan error
+        JOptionPane.showMessageDialog(this, "Input harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
+     }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         jTextField1.setText("");
+         jTextField2.setText("");
+         jTextField1.requestFocus();
+
+    
+    // Tampilkan pesan konfirmasi
+    JOptionPane.showMessageDialog(this, "Input dan hasil telah dihapus.", "Hapus", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin keluar?", "Konfirmasi Keluar", JOptionPane.YES_NO_OPTION);
+    if (confirm == JOptionPane.YES_OPTION) {
+        System.exit(0); // Keluar dari aplikasi
+    }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
